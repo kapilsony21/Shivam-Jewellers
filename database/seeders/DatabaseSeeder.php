@@ -14,16 +14,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run() {
         $users = [
+            
             [
                 'name' => 'Kapil Soni',
                 'email' => 'kapilsony21@gmail.com',
                 'password' => Hash::make('admin@kapil123')
             ],
+                        
             [
                 'name' => 'Shivam Soni',
-                'email' => 'shivamsoni@gmail.com',
+                'email' => 'shivsoni4455@gmail.com',
                 'password' => Hash::make('admin@shivu123')
             ]
+
         ];
 
         foreach ($users as $userData) {

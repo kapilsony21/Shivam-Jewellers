@@ -28,7 +28,7 @@
                             </div>
                             <div class="mt-6">
                                 <x-input-label for="type" :value="__('Product Type')" />
-                                <select name="type" id="type" class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
+                                <select name="type" id="type" class="border-gray-300  p-1 text-start pr-10 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
                                     <option>Select Type</option>
                                     <option value="0">Gold</option>
                                     <option value="1">Silver</option>

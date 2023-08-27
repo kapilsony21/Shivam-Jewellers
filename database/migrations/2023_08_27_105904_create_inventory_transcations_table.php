@@ -6,27 +6,21 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
-        Schema::create('inventory_transcations', function (Blueprint $table) {
+        Schema::create('inventory_transactions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->reference('id')->on('products');
+            $table->foreignId('customer_id')->reference('id')->on('customers');
+            $table->foreignId('customer_invoice_id')->reference('id')->on('customer_invoices');
+            $table->foreignId('ledger_id')->reference('id')->on('ledgers');
             $table->integer('quantity');
             $table->integer('type');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('inventory_transcations');

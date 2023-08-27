@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Customer extends Model
+class InventoryTransaction extends Model
 {
     use HasFactory;
-    
+
     protected $guarded = [];
 
-    public function customer_invoice() {
-        return $this->hasMany(CustomerInvoice::class);
+    public function product() {
+        return $this->belongsTo(Product::class);
     }
 }

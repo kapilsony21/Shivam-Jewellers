@@ -16,6 +16,9 @@ return new class extends Migration
         Schema::create('customer_invoices', function (Blueprint $table) {
             $table->id();
             $table->foreignId('customer_id')->reference('id')->on('customers');
+            $table->foreignId('inventory_transaction_id')->reference('id')->on('inventory_transactions');
+            $table->decimal('rate',10,2)->default(0);
+            $table->decimal('tax_amount',10,2)->default(0);
             $table->decimal('total_amount',10,2);
             $table->timestamps();
         });

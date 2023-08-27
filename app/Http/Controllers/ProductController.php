@@ -77,32 +77,48 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $products
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
+        $product = Product::findOrFail($id);
         return view('stock/show',compact('product'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Product  $products
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Product $product)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $products
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Product $product)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'image' =>'nullable|max:1024',
+            'description' => 'nullable',
+            'type'=>'required',
+            'weight'=>'required',
+            'price' =>'required',
+        ]);
+
+            $input = $request->all();
+
+        $product = Product::findOrFail($request->id);
+
+        $image = $product->image;
+        if($request->hasFile('image')) {
+            $image = $request->file('image')->store('/products');
+        }
+
+        $product->name = $input['name'];
+        $product->user_id = $request->user()->id;
+        $product->description = $input['description'];
+        $product->type = $input['type'];
+        $product->weight = $input['weight'];
+        $product->price = $input['price'];
+        $product->image = $image;
+        $product->stock()->create([
+            'quantity' => $input['quantity'],
+            'type'=> 2
+        ]);
+        $product->save();
+
+        return redirect()->back();
+
+
     }
 
     /**
