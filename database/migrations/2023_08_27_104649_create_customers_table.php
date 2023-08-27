@@ -15,6 +15,15 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->reference('id')->on('users');
+            $table->string('name');
+            $table->string('email')->nullable();
+            $table->string('phone_no')->nullable();
+            $table->longText('address')->nullable();
+            $table->longText('landmark')->nullable();
+            $table->string('city')->nullable();
+            $table->string('pin_code')->nullable();
+            $table->string('state');
             $table->timestamps();
         });
     }
