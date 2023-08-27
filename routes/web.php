@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/customers/{id}/show',[CustomerController::class,'show'])->name('customer.show');
     Route::patch('/customers/update',[CustomerController::class,'update'])->name('customer.update');
     Route::delete('/customers/delete',[CustomerController::class,'delete'])->name('customer.delete');
+    
     Route::get('/customers/invoice/all',[CustomerController::class,'delete'])->name('customer.invoice.all');
     Route::get('/customers/invoice/create',[CustomerController::class,'delete'])->name('customer.invoice.create');
     Route::get('/customers/invoice/show',[CustomerController::class,'delete'])->name('customer.invoice.show');
